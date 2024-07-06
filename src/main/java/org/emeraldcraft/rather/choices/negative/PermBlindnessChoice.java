@@ -11,7 +11,7 @@ import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.emeraldcraft.rather.Choice;
+import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class PermBlindnessChoice implements Choice.ChoiceRunnable, Listener {
     private Player player;

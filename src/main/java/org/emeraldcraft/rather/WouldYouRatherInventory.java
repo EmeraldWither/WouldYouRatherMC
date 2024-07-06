@@ -3,15 +3,13 @@ package org.emeraldcraft.rather;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataType;
+import org.emeraldcraft.rather.choiceapi.Choice;
 import org.jetbrains.annotations.NotNull;
 
-import javax.xml.stream.events.Namespace;
 import java.util.ArrayList;
 import java.util.List;
 

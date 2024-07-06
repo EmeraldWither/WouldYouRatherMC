@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
-import org.emeraldcraft.rather.Choice;
+import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class InfiniteDiamondsChoice implements Choice.ChoiceRunnable, Listener {
     private Player player;

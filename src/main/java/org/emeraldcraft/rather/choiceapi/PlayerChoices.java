@@ -1,12 +1,11 @@
-package org.emeraldcraft.rather;
+package org.emeraldcraft.rather.choiceapi;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.emeraldcraft.rather.WouldYouRatherPlugin;
 
 import java.util.HashMap;
 
@@ -16,23 +15,24 @@ public class PlayerChoices {
 
     public void processChoiceOne(Player player) {
         Choice[][] choices = proposedOptions.get(player);
-        choices[0][0].runnable().run(WouldYouRatherPlugin.getInstance(), player);
-        choices[0][1].runnable().run(WouldYouRatherPlugin.getInstance(), player);
-        player.sendMessage(getText(1, choices));
         proposedOptions.remove(player);
         playerInventories.remove(player);
+
+        choices[0][0].runnable().getChoice().run(WouldYouRatherPlugin.getInstance(), player);
+        choices[0][1].runnable().getChoice().run(WouldYouRatherPlugin.getInstance(), player);
+
+        player.sendMessage(getText(1, choices));
     }
 
     public void processChoiceTwo(Player player) {
         Choice[][] choices = proposedOptions.get(player);
-        choices[1][0].runnable().run(WouldYouRatherPlugin.getInstance(), player);
-        choices[1][1].runnable().run(WouldYouRatherPlugin.getInstance(), player);
-
-        player.sendMessage(getText(2, choices));
-
         proposedOptions.remove(player);
         playerInventories.remove(player);
 
+        choices[1][0].runnable().getChoice().run(WouldYouRatherPlugin.getInstance(), player);
+        choices[1][1].runnable().getChoice().run(WouldYouRatherPlugin.getInstance(), player);
+
+        player.sendMessage(getText(2, choices));
     }
 
     public void proposeOptions(Player player, Choice[][] choices, Inventory inventory) {
