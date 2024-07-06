@@ -1,0 +1,4 @@
+name: WouldYouRather
+version: '${version}'
+main: org.emeraldcraft.rather.WouldYouRatherPlugin
+api-version: '1.21'
