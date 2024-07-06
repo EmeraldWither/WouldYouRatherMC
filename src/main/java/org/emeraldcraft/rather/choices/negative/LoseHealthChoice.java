@@ -11,6 +11,6 @@ public class LoseHealthChoice implements Choice.ChoiceRunnable {
     @Override
     public void run(Plugin plugin, Player player) {
         player.registerAttribute(Attribute.GENERIC_MAX_HEALTH);
-        Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getBaseValue() * 0.75);
+        Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getValue() * 0.75);
     }
 }

@@ -25,7 +25,7 @@ public class WouldYouRatherInventory implements InventoryHolder {
                     .color(TextColor.color(255, 255, 255));
 
     public static final int[] OPTION_ONE_SELECTION_AREA = {10, 11, 19, 20, 28, 29, 37, 38};
-    public static final int[] OPTION_TWO_SELECTION_AREA = {15, 16, 24, 25, 33, 34, 42, 43};
+    public static final int[] OPTION_TWO_SELECTION_AREA = {16, 17, 25, 26, 34, 35, 43, 44};
 
     private final Inventory inventory;
 

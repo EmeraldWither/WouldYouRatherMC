@@ -34,9 +34,9 @@ public class PromptCommand {
         option2[0] = Choices.POSITIVE[new Random().nextInt(Choices.POSITIVE.length)];
         option2[1] = Choices.NEGATIVE[new Random().nextInt(Choices.NEGATIVE.length)];
 
-        WouldYouRatherPlugin.getInstance().getPlayerChoices().proposeOptions(sender, new Choice[][]{option1, option2});
 
         Inventory inventory = new WouldYouRatherInventory(JavaPlugin.getPlugin(WouldYouRatherPlugin.class),option1, option2).getInventory();
+        WouldYouRatherPlugin.getInstance().getPlayerChoices().proposeOptions(sender, new Choice[][]{option1, option2}, inventory);
         assert sender != null;
         sender.openInventory(inventory);
         return 0;
