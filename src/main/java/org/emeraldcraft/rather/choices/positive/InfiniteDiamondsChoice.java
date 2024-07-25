@@ -23,7 +23,7 @@ public class InfiniteDiamondsChoice implements Choice.ChoiceRunnable, Listener {
 
         if(this.player == null) return;
         if(!event.getPlayer().equals(this.player)) return;
-
+        if(!event.getBlock().getType().name().contains("ORE")) return;
         event.setDropItems(false);
         Location location = event.getBlock().getLocation();
         location.getWorld().dropItem(location, new ItemStack(Material.DIAMOND));

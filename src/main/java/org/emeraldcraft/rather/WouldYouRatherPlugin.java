@@ -11,6 +11,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.emeraldcraft.rather.choiceapi.PlayerChoices;
 import org.emeraldcraft.rather.commands.PromptCommand;
+import org.emeraldcraft.rather.commands.StartCommand;
 import org.emeraldcraft.rather.listeners.MenuInteractionListener;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,23 +38,27 @@ public final class WouldYouRatherPlugin extends JavaPlugin {
         manager.registerEventHandler(LifecycleEvents.COMMANDS, event -> {
             final Commands commands = event.registrar();
             commands.register(
-                    getCommand(),
+                    getPromptCommand(),
                     "Default Would You Rather Command",
                     List.of()
             );
         });
 
         Bukkit.getPluginManager().registerEvents(new MenuInteractionListener(), this);
-
     }
 
-    private @NotNull LiteralCommandNode<CommandSourceStack> getCommand() {
+    private @NotNull LiteralCommandNode<CommandSourceStack> getPromptCommand() {
         return Commands.literal("wouldyourather")
                 .then(Commands.literal("prompt")
                         .then(Commands.argument("player", ArgumentTypes.player()).executes(
-                                context -> new PromptCommand().run(context)
+                                        context -> new PromptCommand().run(context)
+                                )
                         )
-                    )
+                )
+                .then(Commands.literal("start")
+                        .executes(
+                                context -> new StartCommand().run()
+                        )
                 )
                 .build();
     }
