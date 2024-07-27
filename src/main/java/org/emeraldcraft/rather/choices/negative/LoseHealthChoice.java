@@ -1,16 +1,14 @@
 package org.emeraldcraft.rather.choices.negative;
 
 import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 import java.util.Objects;
 
-public class LoseHealthChoice implements Choice.ChoiceRunnable {
+public class LoseHealthChoice extends Choice.ChoiceRunnable {
     @Override
-    public void run(Plugin plugin, Player player) {
-        player.registerAttribute(Attribute.GENERIC_MAX_HEALTH);
-        Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getBaseValue() * 0.75);
+    public void run() {
+        getPlayer().registerAttribute(Attribute.GENERIC_MAX_HEALTH);
+        Objects.requireNonNull(getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(Objects.requireNonNull(getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH)).getBaseValue() * 0.75);
     }
 }

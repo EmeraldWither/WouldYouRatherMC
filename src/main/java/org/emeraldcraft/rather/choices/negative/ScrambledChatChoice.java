@@ -10,20 +10,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
-public class ScrambledChatChoice implements Choice.ChoiceRunnable, Listener {
-    private Player player;
-
+public class ScrambledChatChoice extends Choice.ChoiceRunnable implements Listener {
     @Override
-    public void run(Plugin plugin, Player player) {
-        this.player = player;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+    public void run() {
+        registerEvents();
     }
 
     @EventHandler
     public void onChat(AsyncChatEvent event) {
         event.renderer((source, sourceDisplayName, message, viewer) -> {
-            if (player.equals(source)) {
-                return message.decorate(TextDecoration.OBFUSCATED).append(Component.text("thing added"));
+            if (getPlayer().equals(source)) {
+                return message.decorate(TextDecoration.OBFUSCATED).append(message);
             }
             return message;
         });

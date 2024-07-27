@@ -8,17 +8,14 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
-public class NoExplosionDamageChoice implements Choice.ChoiceRunnable, Listener {
-    private Player player;
+public class NoExplosionDamageChoice extends Choice.ChoiceRunnable implements Listener {
     @Override
-    public void run(Plugin plugin, Player player) {
-        this.player = player;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+    public void run() {
+        registerEvents();
     }
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent event) {
-        if(this.player == null) return;
-        if(!this.player.equals(event.getEntity())) return;
+        if(!getPlayer().equals(event.getEntity())) return;
         if (event.getCause() != EntityDamageEvent.DamageCause.BLOCK_EXPLOSION && event.getCause() != EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)
             return;
         event.setCancelled(true);

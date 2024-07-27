@@ -6,10 +6,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
-public class ChunkDeleteChoice implements Choice.ChoiceRunnable {
+public class ChunkDeleteChoice extends Choice.ChoiceRunnable {
     @Override
-    public void run(Plugin plugin, Player player) {
-        Chunk chunk = player.getLocation().getChunk();
+    public void run() {
+        Chunk chunk = getPlayer().getLocation().getChunk();
         int yLow = chunk.getWorld().getMinHeight();
         int yHigh = chunk.getWorld().getMaxHeight();
 

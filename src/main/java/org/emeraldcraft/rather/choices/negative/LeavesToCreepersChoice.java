@@ -2,20 +2,17 @@ package org.emeraldcraft.rather.choices.negative;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 import static org.bukkit.Material.AIR;
-import static org.bukkit.entity.EntityType.*;
+import static org.bukkit.entity.EntityType.CREEPER;
 
-public class LeavesToCreepersChoice implements Choice.ChoiceRunnable {
+public class LeavesToCreepersChoice extends Choice.ChoiceRunnable {
     @Override
-    public void run(Plugin plugin, Player player) {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
-            Location location = player.getLocation();
+    public void run() {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(getPlugin(), () -> {
+            Location location = getPlayer().getLocation();
             for(int x = -3; x < 3; x++) {
                 for(int y = -3; y < 3; y++) {
                     for(int z = -3; z < 3; z++) {

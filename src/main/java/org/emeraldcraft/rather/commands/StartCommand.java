@@ -1,14 +1,10 @@
 package org.emeraldcraft.rather.commands;
 
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import io.papermc.paper.command.brigadier.CommandSourceStack;
-import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.emeraldcraft.rather.Choices;
+import org.emeraldcraft.rather.choices.Choices;
 import org.emeraldcraft.rather.WouldYouRatherInventory;
 import org.emeraldcraft.rather.WouldYouRatherPlugin;
 import org.emeraldcraft.rather.choiceapi.Choice;

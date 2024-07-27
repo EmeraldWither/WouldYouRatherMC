@@ -9,22 +9,17 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
-public class EnderPearlEggsChoice implements Choice.ChoiceRunnable, Listener {
-
-    private Player player;
-
+public class EnderPearlEggsChoice extends Choice.ChoiceRunnable implements Listener {
     @Override
-    public void run(Plugin plugin, Player player) {
-        this.player = player;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+    public void run() {
+        registerEvents();
     }
 
     @EventHandler
     public void onEggLand(ProjectileHitEvent event) {
-        if(this.player == null) return;
         if (event.getEntity().getType() != EntityType.EGG) return;
         if(!(event.getEntity().getShooter() instanceof Player player)) return;
-        if(!player.equals(this.player)) return;
+        if(!player.equals(getPlayer())) return;
 
 
         if(event.getHitBlock() != null) {

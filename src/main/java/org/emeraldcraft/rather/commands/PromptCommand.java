@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
-import org.emeraldcraft.rather.Choices;
+import org.emeraldcraft.rather.choices.Choices;
 import org.emeraldcraft.rather.WouldYouRatherInventory;
 import org.emeraldcraft.rather.WouldYouRatherPlugin;
 

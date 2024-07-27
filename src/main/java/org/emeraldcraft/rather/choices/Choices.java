@@ -1,4 +1,4 @@
-package org.emeraldcraft.rather;
+package org.emeraldcraft.rather.choices;
 
 import org.emeraldcraft.rather.choiceapi.Choice;
 import org.emeraldcraft.rather.choices.negative.*;

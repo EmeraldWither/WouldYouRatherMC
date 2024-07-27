@@ -3,33 +3,28 @@ package org.emeraldcraft.rather.choices.negative;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPotionEffectEvent;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
-public class PermBlindnessChoice implements Choice.ChoiceRunnable, Listener {
-    private Player player;
-
+public class PermBlindnessChoice extends Choice.ChoiceRunnable implements Listener {
     @Override
-    public void run(Plugin plugin, Player player) {
-        this.player = player;
-        player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, PotionEffect.INFINITE_DURATION, 1, true, true));
-        Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
+    public void run() {
+        getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, PotionEffect.INFINITE_DURATION, 1, true, true));
+        registerEvents();
     }
 
     @EventHandler
     public void onEffectChange(EntityPotionEffectEvent event) {
         if (event.getEntity() instanceof Player plyr) {
-            if (this.player == null) {
+            if (getPlayer() == null) {
                 return;
             }
-            if (!event.getEntity().equals(this.player)) {
+            if (!event.getEntity().equals(getPlayer())) {
                 return;
             }
             if (event.getModifiedType() == PotionEffectType.BLINDNESS) {

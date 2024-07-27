@@ -8,18 +8,14 @@ import org.bukkit.event.block.BlockDropItemEvent;
 import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
-public class DoubleDropsChoice implements Choice.ChoiceRunnable, Listener {
-    private Player player;
+public class DoubleDropsChoice extends Choice.ChoiceRunnable implements Listener {
     @Override
-    public void run(Plugin plugin, Player player) {
-        this.player = player;
-        Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
+    public void run() {
+        registerEvents();
     }
     @EventHandler
     public void onBlockMine(BlockDropItemEvent event) {
-
-        if(this.player == null) return;
-        if(!event.getPlayer().equals(this.player)) return;
+        if(!event.getPlayer().equals(getPlayer())) return;
 
         event.getItems().forEach(item -> item.getItemStack().setAmount(item.getItemStack().getAmount() * 2));
     }

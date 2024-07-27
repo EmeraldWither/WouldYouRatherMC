@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.*;
-import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 import java.util.Collection;
@@ -13,9 +12,10 @@ import java.util.List;
 /**
  * this code absolutely sucks
  */
-public class AllItemsDeCraftedChoice implements Choice.ChoiceRunnable {
+public class AllItemsDeCraftedChoice extends Choice.ChoiceRunnable {
     @Override
-    public void run(Plugin plugin, Player player) {
+    public void run() {
+        Player player = getPlayer();
         ItemStack[] items = player.getInventory().getContents();
         for (int i = 0; i < items.length; i++) {
             ItemStack item = items[i];

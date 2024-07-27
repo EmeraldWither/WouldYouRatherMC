@@ -1,28 +1,21 @@
 package org.emeraldcraft.rather.choices.positive;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
-public class InfiniteDiamondsChoice implements Choice.ChoiceRunnable, Listener {
-    private Player player;
+public class InfiniteDiamondsChoice extends Choice.ChoiceRunnable implements Listener {
     @Override
-    public void run(Plugin plugin, Player player) {
-        this.player = player;
-        Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
+    public void run() {
+        registerEvents();
     }
     @EventHandler
     public void onBlockMine(BlockBreakEvent event) {
-
-        if(this.player == null) return;
-        if(!event.getPlayer().equals(this.player)) return;
+        if(!event.getPlayer().equals(getPlayer())) return;
         if(!event.getBlock().getType().name().contains("ORE")) return;
         event.setDropItems(false);
         Location location = event.getBlock().getLocation();

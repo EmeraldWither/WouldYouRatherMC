@@ -19,19 +19,16 @@ import java.util.List;
 
 import static org.bukkit.persistence.PersistentDataType.*;
 
-public class AlwaysEnderEyesChoice implements Choice.ChoiceRunnable, Listener {
-    private Player player;
+public class AlwaysEnderEyesChoice extends Choice.ChoiceRunnable implements Listener {
     private Piglin piglin;
     @Override
-    public void run(Plugin plugin, Player player) {
-        this.player = player;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+    public void run() {
+        registerEvents();
     }
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractAtEntityEvent event) {
-        if (this.player == null) return;
-        if (!this.player.equals(event.getPlayer())) return;
+        if (!getPlayer().equals(event.getPlayer())) return;
         if (!(event.getRightClicked() instanceof Piglin piglin)) return;
         if(event.getPlayer().getInventory().getItem(event.getHand()).getType() == Material.GOLD_INGOT) {
             this.piglin = piglin;

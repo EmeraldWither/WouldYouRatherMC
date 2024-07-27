@@ -1,14 +1,12 @@
 package org.emeraldcraft.rather.choices.positive;
 
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
-public class ItemsFullStackChoice implements Choice.ChoiceRunnable {
+public class ItemsFullStackChoice extends Choice.ChoiceRunnable {
     @Override
-    public void run(Plugin plugin, Player player) {
-        for(ItemStack item : player.getInventory().getContents()) {
+    public void run() {
+        for(ItemStack item : getPlayer().getInventory().getContents()) {
             if(item == null) continue;
             item.setAmount(item.getMaxStackSize());
         }
