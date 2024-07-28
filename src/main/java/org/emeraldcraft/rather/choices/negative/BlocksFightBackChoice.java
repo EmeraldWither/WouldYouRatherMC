@@ -1,15 +1,17 @@
 package org.emeraldcraft.rather.choices.negative;
 
 import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
 import org.bukkit.World;
-import org.bukkit.entity.BlockDisplay;
-import org.bukkit.entity.Display;
-import org.bukkit.entity.Wolf;
-import org.bukkit.entity.Zombie;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Transformation;
+import org.bukkit.util.Vector;
 import org.emeraldcraft.rather.choiceapi.Choice;
 import org.joml.AxisAngle4f;
 import org.joml.Vector3f;
@@ -27,11 +29,24 @@ public class BlocksFightBackChoice extends Choice.ChoiceRunnable implements List
             BlockDisplay display = loc.getWorld().spawn(loc, BlockDisplay.class);
             display.setBlock(event.getBlock().getBlockData());
             display.setTransformation(new Transformation(new Vector3f(-0.5f, -1.02f, -0.5f), new AxisAngle4f(), new Vector3f(1, 1, 1), new AxisAngle4f()));
-            Zombie zombie = loc.getWorld().spawn(loc.toCenterLocation(), Zombie.class);
+            Zombie zombie = loc.getWorld().spawn(loc.toCenterLocation(), Zombie.class, false, zombie1 -> {});
             zombie.setInvisible(true);
             zombie.setBaby();
             zombie.setShouldBurnInDay(false);
             zombie.addPassenger(display);
+            zombie.setHealth(20.0);
+            zombie.getPersistentDataContainer().set(new NamespacedKey("wouldyourather", "zombie"), PersistentDataType.BOOLEAN, true);
+            event.setDropItems(false);
+        }
+    }
+
+    @EventHandler
+    public void onEntityKill(EntityDeathEvent event) {
+        if(event.getEntity().getPersistentDataContainer().has(new NamespacedKey("wouldyourather", "zombie"), PersistentDataType.BOOLEAN)) {
+            event.getDrops().clear();
+            BlockDisplay blockDisplay = (BlockDisplay) event.getEntity().getPassengers().getFirst();
+            blockDisplay.remove();
+            event.getDrops().add(new ItemStack(blockDisplay.getBlock().getMaterial()));
         }
     }
 

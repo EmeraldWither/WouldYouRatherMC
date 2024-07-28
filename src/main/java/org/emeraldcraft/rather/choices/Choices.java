@@ -5,7 +5,7 @@ import org.emeraldcraft.rather.choices.negative.*;
 import org.emeraldcraft.rather.choices.positive.*;
 
 public class Choices {
-    public static final Choice[] POSITIVE = new Choice[] {
+    public static final Choice[] POSITIVE = new Choice[]{
 //            new Choice(InfiniteDiamondsChoice::new, "You can only get diamonds from ores", true, "INFINITE_DIAMONDS"),
 //            new Choice(DoubleDropsChoice::new, "You get double the drops", true, "DOUBLE_DROPS"),
 //            new Choice(EnderPearlEggsChoice::new, "You can use eggs to teleport as ender pearls", true, "EGG_TELEPORT"),
@@ -15,10 +15,11 @@ public class Choices {
 //            new Choice(NoExplosionDamageChoice::new, "You take no explosion damage", true, "NO_EXPLOSION_DMG"),
 //            new Choice(NoHungerChoice::new, "You cannot lose hunger", true, "NO_HUNGER"),
 //            new Choice(AlwaysEnderEyesChoice::new, "You can always get eyes of ender's from piglin trades", true, "NO_HUNGER"),
-            new Choice(FasterMovementChoice::new, "You move faster", true, "FASTER_MOVEMENT"),
+//            new Choice(FasterMovementChoice::new, "You move faster", true, "FASTER_MOVEMENT"),
 //            new Choice(IncreaseJumpHeightChoice::new, "You jump higher", true, "INCREASE_JUMP_HEIGHT"),
+            new Choice(PetRockChoice::new, "You get a pet rock :D", true, "PET_ROCK"),
     };
-    public static final Choice[] NEGATIVE = new Choice[] {
+    public static final Choice[] NEGATIVE = new Choice[]{
 //            new Choice(PermBlindnessChoice::new, "You have permanent blindness.", false, "PERM_BLINDNESS"),
 //            new Choice(LoseHealthChoice::new, "You lose 25% of your health. ", false, "LOSE_HEALTH"),
 //            new Choice(InstantHighTeleportChoice::new, "You get teleported to y = 250 ", false, "INSTANT_HIGH_TELEPORT"),
