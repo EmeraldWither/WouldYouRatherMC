@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.emeraldcraft.rather.choices.Choices;
-import org.emeraldcraft.rather.WouldYouRatherInventory;
+import org.emeraldcraft.rather.inventory.WouldYouRatherInventory;
 import org.emeraldcraft.rather.WouldYouRatherPlugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
@@ -23,7 +23,7 @@ public class StartCommand {
                 option2[0] = Choices.POSITIVE[new Random().nextInt(Choices.POSITIVE.length)];
                 option2[1] = Choices.NEGATIVE[new Random().nextInt(Choices.NEGATIVE.length)];
 
-                Inventory inventory = new WouldYouRatherInventory(JavaPlugin.getPlugin(WouldYouRatherPlugin.class),option1, option2).getInventory();
+                Inventory inventory = new WouldYouRatherInventory(JavaPlugin.getPlugin(WouldYouRatherPlugin.class),option1, option2, WouldYouRatherInventory.INVENTORY_NAME).getInventory();
                 WouldYouRatherPlugin.getInstance().getPlayerChoices().proposeOptions(player, new Choice[][]{option1, option2}, inventory);
                 player.openInventory(inventory);
             }

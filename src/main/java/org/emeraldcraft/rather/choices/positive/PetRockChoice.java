@@ -52,6 +52,9 @@ public class PetRockChoice extends Choice.ChoiceRunnable implements Listener {
     public void onWolfDeath(EntityDeathEvent event) {
         if(event.getEntity().getPersistentDataContainer().has(new NamespacedKey("wouldyourather", "wolf"), PersistentDataType.BOOLEAN)) {
             event.getDrops().clear();
+            if(!event.getEntity().getPassengers().isEmpty()){
+                return;
+            }
             BlockDisplay blockDisplay = (BlockDisplay) event.getEntity().getPassengers().getFirst();
             blockDisplay.remove();
             event.getDrops().add(new ItemStack(blockDisplay.getBlock().getMaterial()));

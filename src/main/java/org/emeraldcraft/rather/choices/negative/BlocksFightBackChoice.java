@@ -1,5 +1,8 @@
 package org.emeraldcraft.rather.choices.negative;
 
+import net.kyori.adventure.text.Component;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.text.WordUtils;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
@@ -35,6 +38,7 @@ public class BlocksFightBackChoice extends Choice.ChoiceRunnable implements List
             zombie.setShouldBurnInDay(false);
             zombie.addPassenger(display);
             zombie.setHealth(20.0);
+            zombie.customName(Component.text(WordUtils.capitalize(event.getBlock().getType().toString().toLowerCase().replaceAll("_", " "))));
             zombie.getPersistentDataContainer().set(new NamespacedKey("wouldyourather", "zombie"), PersistentDataType.BOOLEAN, true);
             event.setDropItems(false);
         }

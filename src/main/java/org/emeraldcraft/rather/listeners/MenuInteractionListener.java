@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.emeraldcraft.rather.choiceapi.PlayerChoices;
-import org.emeraldcraft.rather.WouldYouRatherInventory;
+import org.emeraldcraft.rather.inventory.WouldYouRatherInventory;
 import org.emeraldcraft.rather.WouldYouRatherPlugin;
 
 import java.util.Arrays;
