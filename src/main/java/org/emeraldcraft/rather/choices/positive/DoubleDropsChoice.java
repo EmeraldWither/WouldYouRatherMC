@@ -11,7 +11,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 public class DoubleDropsChoice extends Choice.ChoiceRunnable implements Listener {
     @Override
     public void run() {
-        registerEvents();
+        super.registerEvents();
     }
     @EventHandler
     public void onBlockMine(BlockDropItemEvent event) {

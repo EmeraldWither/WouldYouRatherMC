@@ -13,7 +13,7 @@ import static org.bukkit.Material.ROTTEN_FLESH;
 public class OnlyRottenFleshChoice extends Choice.ChoiceRunnable implements Listener {
     @Override
     public void run() {
-        registerEvents();
+        super.registerEvents();
     }
     @EventHandler
     public void onFoodEach(FoodLevelChangeEvent event) {

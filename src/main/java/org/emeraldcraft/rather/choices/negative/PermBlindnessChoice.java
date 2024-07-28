@@ -15,7 +15,7 @@ public class PermBlindnessChoice extends Choice.ChoiceRunnable implements Listen
     @Override
     public void run() {
         getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, PotionEffect.INFINITE_DURATION, 1, true, true));
-        registerEvents();
+        super.registerEvents();
     }
 
     @EventHandler
@@ -29,7 +29,7 @@ public class PermBlindnessChoice extends Choice.ChoiceRunnable implements Listen
             }
             if (event.getModifiedType() == PotionEffectType.BLINDNESS) {
                 plyr.sendMessage(Component.text("You cant escape the blindness.").color(TextColor.color(255, 255, 0)).decorate(TextDecoration.UNDERLINED));
-                event.setCancelled(true);
+                getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, PotionEffect.INFINITE_DURATION, 1, true, true));
             }
         }
     }

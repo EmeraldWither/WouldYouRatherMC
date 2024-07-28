@@ -17,14 +17,16 @@ public class PlayerChoices {
         Choice[][] choices = proposedOptions.get(player);
         proposedOptions.remove(player);
         playerInventories.remove(player);
-        choices[0][0].runnable().getChoice().setPlayer(player);
-        choices[0][0].runnable().getChoice().setPlugin(WouldYouRatherPlugin.getInstance());
-        choices[0][0].runnable().getChoice().run();
+        Choice.ChoiceRunnable choice = choices[0][0].runnable().getChoice();
+        choice.setPlayer(player);
+        choice.setPlugin(WouldYouRatherPlugin.getInstance());
+        choice.run();
 
 
-        choices[0][1].runnable().getChoice().setPlayer(player);
-        choices[0][1].runnable().getChoice().setPlugin(WouldYouRatherPlugin.getInstance());
-        choices[0][1].runnable().getChoice().run();
+        Choice.ChoiceRunnable choice2 = choices[0][1].runnable().getChoice();
+        choice2.setPlayer(player);
+        choice2.setPlugin(WouldYouRatherPlugin.getInstance());
+        choice2.run();
 
         player.sendMessage(getText(1, choices));
     }
@@ -34,14 +36,16 @@ public class PlayerChoices {
         proposedOptions.remove(player);
         playerInventories.remove(player);
 
-        choices[1][0].runnable().getChoice().setPlayer(player);
-        choices[1][0].runnable().getChoice().setPlugin(WouldYouRatherPlugin.getInstance());
-        choices[1][0].runnable().getChoice().run();
+        Choice.ChoiceRunnable choice = choices[1][0].runnable().getChoice();
+        choice.setPlayer(player);
+        choice.setPlugin(WouldYouRatherPlugin.getInstance());
+        choice.run();
 
 
-        choices[1][1].runnable().getChoice().setPlayer(player);
-        choices[1][1].runnable().getChoice().setPlugin(WouldYouRatherPlugin.getInstance());
-        choices[1][1].runnable().getChoice().run();
+        Choice.ChoiceRunnable choice2 = choices[1][1].runnable().getChoice();
+        choice2.setPlayer(player);
+        choice2.setPlugin(WouldYouRatherPlugin.getInstance());
+        choice2.run();
 
 
         player.sendMessage(getText(2, choices));

@@ -23,7 +23,7 @@ public class AlwaysEnderEyesChoice extends Choice.ChoiceRunnable implements List
     private Piglin piglin;
     @Override
     public void run() {
-        registerEvents();
+        super.registerEvents();
     }
 
     @EventHandler

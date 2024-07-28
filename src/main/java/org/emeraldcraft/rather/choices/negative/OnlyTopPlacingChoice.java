@@ -10,7 +10,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 public class OnlyTopPlacingChoice extends Choice.ChoiceRunnable implements Listener {
     @Override
     public void run() {
-       registerEvents();
+       super.registerEvents();
     }
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {

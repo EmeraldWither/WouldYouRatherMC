@@ -18,6 +18,6 @@ public class CantTouchGrassChoice extends Choice.ChoiceRunnable implements Liste
 
     @Override
     public void run() {
-        registerEvents();
+        super.registerEvents();
     }
 }

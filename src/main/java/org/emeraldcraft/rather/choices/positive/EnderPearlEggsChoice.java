@@ -12,7 +12,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 public class EnderPearlEggsChoice extends Choice.ChoiceRunnable implements Listener {
     @Override
     public void run() {
-        registerEvents();
+        super.registerEvents();
     }
 
     @EventHandler

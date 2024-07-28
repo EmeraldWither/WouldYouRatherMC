@@ -11,7 +11,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 public class NoExplosionDamageChoice extends Choice.ChoiceRunnable implements Listener {
     @Override
     public void run() {
-        registerEvents();
+        super.registerEvents();
     }
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent event) {
