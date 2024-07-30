@@ -7,6 +7,10 @@ import org.bukkit.event.Listener;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class ScrambledChatChoice extends Choice.ChoiceRunnable implements Listener {
+    public ScrambledChatChoice() {
+        super("Your chat gets scrambled");
+    }
+
     @Override
     public void run() {
         super.registerEvents();

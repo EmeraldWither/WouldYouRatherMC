@@ -12,6 +12,10 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 import static org.bukkit.Sound.ENTITY_ITEM_BREAK;
 
 public class NoArmorChoice extends Choice.ChoiceRunnable implements Listener {
+    public NoArmorChoice() {
+        super("You can no longer wear any armor.");
+    }
+
     @Override
     public void run() {
         PlayerInventory inventory = getPlayer().getInventory();

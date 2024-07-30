@@ -1,26 +1,27 @@
 package org.emeraldcraft.rather.choices.positive;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.Sound;
 import org.bukkit.entity.Piglin;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PiglinBarterEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 import java.util.List;
 
-import static org.bukkit.persistence.PersistentDataType.*;
+import static org.bukkit.persistence.PersistentDataType.BOOLEAN;
 
 public class AlwaysEnderEyesChoice extends Choice.ChoiceRunnable implements Listener {
     private Piglin piglin;
+
+    public AlwaysEnderEyesChoice() {
+        super("You always get eyes of enders from Piglin");
+    }
+
     @Override
     public void run() {
         super.registerEvents();

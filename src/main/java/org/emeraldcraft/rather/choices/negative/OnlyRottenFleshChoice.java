@@ -11,6 +11,10 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 import static org.bukkit.Material.ROTTEN_FLESH;
 
 public class OnlyRottenFleshChoice extends Choice.ChoiceRunnable implements Listener {
+    public OnlyRottenFleshChoice() {
+        super("You can only eat rotten flesh");
+    }
+
     @Override
     public void run() {
         super.registerEvents();

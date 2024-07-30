@@ -5,10 +5,13 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerToggleSprintEvent;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class NoSprintChoice extends Choice.ChoiceRunnable implements Listener {
+    public NoSprintChoice() {
+        super("You can no longer sprint");
+    }
+
     @Override
     public void run() {
         super.registerEvents();
@@ -25,5 +28,11 @@ public class NoSprintChoice extends Choice.ChoiceRunnable implements Listener {
             }
 
         }
+    }
+
+    @Override
+    public void cancel() {
+        deRegisterListener();
+        getPlayer().setWalkSpeed(0.1F);
     }
 }

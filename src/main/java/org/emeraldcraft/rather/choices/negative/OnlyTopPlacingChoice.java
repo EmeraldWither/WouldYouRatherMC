@@ -8,6 +8,10 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class OnlyTopPlacingChoice extends Choice.ChoiceRunnable implements Listener {
+    public OnlyTopPlacingChoice() {
+        super("You can only place on the top of blocks");
+    }
+
     @Override
     public void run() {
        super.registerEvents();

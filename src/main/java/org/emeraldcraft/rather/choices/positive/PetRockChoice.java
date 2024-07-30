@@ -8,10 +8,8 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.BlockDisplay;
 import org.bukkit.entity.Wolf;
-import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
@@ -22,6 +20,10 @@ import org.joml.AxisAngle4f;
 import org.joml.Vector3f;
 
 public class PetRockChoice extends Choice.ChoiceRunnable implements Listener {
+    public PetRockChoice() {
+        super("You get a pet rock that defends you");
+    }
+
     @Override
     public void run() {
         Location loc = getPlayer().getLocation();

@@ -12,6 +12,10 @@ import org.bukkit.potion.PotionEffectType;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class PermBlindnessChoice extends Choice.ChoiceRunnable implements Listener {
+    public PermBlindnessChoice() {
+        super("You will have permanent blindness");
+    }
+
     @Override
     public void run() {
         getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, PotionEffect.INFINITE_DURATION, 1, true, true));
@@ -27,10 +31,17 @@ public class PermBlindnessChoice extends Choice.ChoiceRunnable implements Listen
             if (!event.getEntity().equals(getPlayer())) {
                 return;
             }
+            if(event.getNewEffect() != null && event.getNewEffect().getType() == PotionEffectType.BLINDNESS) return;
             if (event.getModifiedType() == PotionEffectType.BLINDNESS) {
                 plyr.sendMessage(Component.text("You cant escape the blindness.").color(TextColor.color(255, 255, 0)).decorate(TextDecoration.UNDERLINED));
                 getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, PotionEffect.INFINITE_DURATION, 1, true, true));
             }
         }
+    }
+
+    @Override
+    public void cancel() {
+        deRegisterListener();
+        getPlayer().removePotionEffect(PotionEffectType.BLINDNESS);
     }
 }

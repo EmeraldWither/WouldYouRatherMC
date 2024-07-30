@@ -25,7 +25,6 @@ public class InventoryAnimationTask implements Runnable {
         } else {
             player.getOpenInventory().setTitle(ChatColor.WHITE + WouldYouRatherInventory.INVENTORY_RAW_NAME_TWO);
         }
-        Bukkit.getLogger().log(Level.INFO, "Running the task.");
         i++;
     }
 }

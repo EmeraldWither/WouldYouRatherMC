@@ -1,12 +1,11 @@
 package org.emeraldcraft.rather.choices.negative;
 
 import net.kyori.adventure.text.Component;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
-import org.bukkit.World;
-import org.bukkit.entity.*;
+import org.bukkit.entity.BlockDisplay;
+import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -14,12 +13,15 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Transformation;
-import org.bukkit.util.Vector;
 import org.emeraldcraft.rather.choiceapi.Choice;
 import org.joml.AxisAngle4f;
 import org.joml.Vector3f;
 
 public class BlocksFightBackChoice extends Choice.ChoiceRunnable implements Listener {
+    public BlocksFightBackChoice() {
+        super("Blocks you break fight back");
+    }
+
     @Override
     public void run() {
         registerEvents();

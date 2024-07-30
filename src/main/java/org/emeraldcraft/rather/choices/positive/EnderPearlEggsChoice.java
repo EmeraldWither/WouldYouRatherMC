@@ -1,15 +1,17 @@
 package org.emeraldcraft.rather.choices.positive;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
-import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class EnderPearlEggsChoice extends Choice.ChoiceRunnable implements Listener {
+    public EnderPearlEggsChoice() {
+        super("You can use eggs as ender pearls.");
+    }
+
     @Override
     public void run() {
         super.registerEvents();

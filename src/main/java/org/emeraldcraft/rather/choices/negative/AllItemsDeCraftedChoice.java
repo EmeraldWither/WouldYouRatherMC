@@ -13,6 +13,10 @@ import java.util.List;
  * this code absolutely sucks
  */
 public class AllItemsDeCraftedChoice extends Choice.ChoiceRunnable {
+    public AllItemsDeCraftedChoice() {
+        super("All items on your get de-crafted");
+    }
+
     @Override
     public void run() {
         Player player = getPlayer();

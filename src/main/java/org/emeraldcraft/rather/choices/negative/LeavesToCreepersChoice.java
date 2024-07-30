@@ -9,9 +9,16 @@ import static org.bukkit.Material.AIR;
 import static org.bukkit.entity.EntityType.CREEPER;
 
 public class LeavesToCreepersChoice extends Choice.ChoiceRunnable {
+    private int id;
+
+    public LeavesToCreepersChoice() {
+        super("Leaves around you turn into creepers");
+    }
+
     @Override
     public void run() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(getPlugin(), () -> {
+        markActive();
+        id = Bukkit.getScheduler().scheduleSyncRepeatingTask(getPlugin(), () -> {
             Location location = getPlayer().getLocation();
             for(int x = -3; x < 3; x++) {
                 for(int y = -3; y < 3; y++) {
@@ -27,5 +34,10 @@ public class LeavesToCreepersChoice extends Choice.ChoiceRunnable {
             }
 
         }, 0, 5);
+    }
+
+    @Override
+    public void cancel() {
+        Bukkit.getScheduler().cancelTask(id);
     }
 }

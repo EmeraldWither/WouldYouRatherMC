@@ -2,11 +2,13 @@ package org.emeraldcraft.rather.choices.negative;
 
 import org.bukkit.Chunk;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class ChunkDeleteChoice extends Choice.ChoiceRunnable {
+    public ChunkDeleteChoice() {
+        super("The chunk you are standing in is deleted");
+    }
+
     @Override
     public void run() {
         Chunk chunk = getPlayer().getLocation().getChunk();

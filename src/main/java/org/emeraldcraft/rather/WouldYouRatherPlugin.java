@@ -6,6 +6,7 @@ import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,12 +20,9 @@ import java.util.List;
 
 @SuppressWarnings("UnstableApiUsage")
 public final class WouldYouRatherPlugin extends JavaPlugin {
+    @Getter
     private static WouldYouRatherPlugin instance;
     private PlayerChoices playerChoices;
-
-    public static WouldYouRatherPlugin getInstance() {
-        return instance;
-    }
 
     public static void setInstance(WouldYouRatherPlugin instance) {
         WouldYouRatherPlugin.instance = instance;

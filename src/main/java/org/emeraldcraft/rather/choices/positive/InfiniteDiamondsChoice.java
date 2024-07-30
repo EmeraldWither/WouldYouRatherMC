@@ -9,6 +9,10 @@ import org.bukkit.inventory.ItemStack;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class InfiniteDiamondsChoice extends Choice.ChoiceRunnable implements Listener {
+    public InfiniteDiamondsChoice() {
+        super("You get diamonds from ores");
+    }
+
     @Override
     public void run() {
         super.registerEvents();

@@ -2,10 +2,13 @@ package org.emeraldcraft.rather.choices.negative;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.plugin.Plugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class InstantHighTeleportChoice extends Choice.ChoiceRunnable {
+    public InstantHighTeleportChoice() {
+        super("You get teleported to y=250");
+    }
+
     @Override
     public void run() {
         Player player = getPlayer();

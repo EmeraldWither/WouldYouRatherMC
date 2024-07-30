@@ -1,66 +1,62 @@
 package org.emeraldcraft.rather.choiceapi;
 
+import lombok.Getter;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.scheduler.BukkitTask;
 import org.emeraldcraft.rather.WouldYouRatherPlugin;
 import org.emeraldcraft.rather.inventory.InventoryAnimationTask;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
+import java.util.List;
 
 public class PlayerChoices {
     private final HashMap<Player, Choice[][]> proposedOptions = new HashMap<>();
+    @Getter
+    private final HashMap<Player, List<Choice.ChoiceRunnable[]>> selectedOptions = new HashMap<>();
     private final HashMap<Player, Inventory> playerInventories = new HashMap<>();
     private final HashMap<Player, Integer> animationTasks = new HashMap<>();
 
     public void processChoiceOne(Player player) {
+        runChoices(0, player);
+    }
+
+    private void addSelectedOption(Player player, Choice.ChoiceRunnable[] choices) {
+        if(!selectedOptions.containsKey(player)) {
+            selectedOptions.put(player, new ArrayList<>());
+        }
+        selectedOptions.get(player).add(choices);
+    }
+
+    private void runChoices(int x, Player player) {
         Choice[][] choices = proposedOptions.get(player);
         proposedOptions.remove(player);
         playerInventories.remove(player);
-        Choice.ChoiceRunnable choice = choices[0][0].runnable().getChoice();
+        Choice.ChoiceRunnable choice = choices[x][0].runnable().getChoice();
         choice.setPlayer(player);
         choice.setPlugin(WouldYouRatherPlugin.getInstance());
         choice.run();
 
 
-        Choice.ChoiceRunnable choice2 = choices[0][1].runnable().getChoice();
+        Choice.ChoiceRunnable choice2 = choices[x][1].runnable().getChoice();
         choice2.setPlayer(player);
         choice2.setPlugin(WouldYouRatherPlugin.getInstance());
         choice2.run();
-        Bukkit.getLogger().log(Level.INFO, "Removing the task.");
+
+        addSelectedOption(player, new Choice.ChoiceRunnable[]{choice, choice2});
 
         Bukkit.getScheduler().cancelTask(animationTasks.get(player));
         animationTasks.remove(player);
-        player.sendMessage(getText(1, choices));
+        player.sendMessage(getText(x, choices));
     }
 
     public void processChoiceTwo(Player player) {
-        Choice[][] choices = proposedOptions.get(player);
-        proposedOptions.remove(player);
-        playerInventories.remove(player);
-
-        Choice.ChoiceRunnable choice = choices[1][0].runnable().getChoice();
-        choice.setPlayer(player);
-        choice.setPlugin(WouldYouRatherPlugin.getInstance());
-        choice.run();
-
-
-        Choice.ChoiceRunnable choice2 = choices[1][1].runnable().getChoice();
-        choice2.setPlayer(player);
-        choice2.setPlugin(WouldYouRatherPlugin.getInstance());
-        choice2.run();
-        Bukkit.getLogger().log(Level.INFO, "Removing the task.");
-
-        Bukkit.getScheduler().cancelTask(animationTasks.get(player));
-        animationTasks.remove(player);
-        player.sendMessage(getText(2, choices));
+        runChoices(1, player);
     }
-
 
     public void proposeOptions(Player player, Choice[][] choices, Inventory inventory) {
         proposedOptions.put(player, choices);
@@ -76,11 +72,11 @@ public class PlayerChoices {
         return Component.newline()
                 .append(Component.text("You have chosen option " + option + "!").color(NamedTextColor.WHITE).decorate(TextDecoration.UNDERLINED))
                 .appendNewline()
-                .append(Component.text(choices[option - 1][0].description()).color(NamedTextColor.GREEN).decorate(TextDecoration.BOLD))
+                .append(Component.text(choices[option][0].runnable().getChoice().getDescription()).color(NamedTextColor.GREEN).decorate(TextDecoration.BOLD))
                 .appendNewline()
                 .append(Component.text("BUT").color(NamedTextColor.WHITE))
                 .appendNewline()
-                .append(Component.text(choices[option - 1][1].description()).color(NamedTextColor.RED).decorate(TextDecoration.BOLD))
+                .append(Component.text(choices[option][1].runnable().getChoice().getDescription()).color(NamedTextColor.RED).decorate(TextDecoration.BOLD))
                 .appendNewline()
                 .appendNewline();
     }
