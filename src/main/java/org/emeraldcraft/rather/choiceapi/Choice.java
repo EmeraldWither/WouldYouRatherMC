@@ -2,6 +2,7 @@ package org.emeraldcraft.rather.choiceapi;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -30,6 +31,11 @@ public record Choice(ChoiceProvider runnable) {
 
         public void cancel() {
             deRegisterListener();
+        }
+
+        public Player getPlayer() {
+            if(!player.isValid() || !player.isOnline()) player = Bukkit.getPlayer(player.getUniqueId());
+            return player;
         }
 
         /**
