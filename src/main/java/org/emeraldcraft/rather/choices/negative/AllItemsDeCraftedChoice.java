@@ -43,7 +43,6 @@ public class AllItemsDeCraftedChoice extends Choice.ChoiceRunnable {
                         if(validateShapelessRecipe(item, ingredient.getItemStack())) {
                             player.getWorld().dropItem(player.getLocation(), ingredient.getItemStack());
                             j+=getShapelessRecipe(item, ingredient.getItemStack());
-                            continue;
                         }
                     }
                 }
@@ -51,9 +50,7 @@ public class AllItemsDeCraftedChoice extends Choice.ChoiceRunnable {
                     player.getWorld().dropItem(player.getLocation(), recipe.getBase().getItemStack());
                     player.getWorld().dropItem(player.getLocation(), recipe.getAddition().getItemStack());
                 }
-                else {
-                    System.out.println(recipes.getFirst().getClass().getName());
-                }
+
             }
             items[i] = new ItemStack(Material.AIR);
         }

@@ -33,7 +33,7 @@ public class BlocksFightBackChoice extends Choice.ChoiceRunnable implements List
             Location loc = event.getBlock().getLocation();
             BlockDisplay display = loc.getWorld().spawn(loc, BlockDisplay.class);
             display.setBlock(event.getBlock().getBlockData());
-            display.setTransformation(new Transformation(new Vector3f(-0.5f, -1.02f, -0.5f), new AxisAngle4f(), new Vector3f(1, 1, 1), new AxisAngle4f()));
+            display.setTransformation(new Transformation(new Vector3f(-0.5f, -1.01f, -0.5f), new AxisAngle4f(), new Vector3f(1, 1, 1), new AxisAngle4f()));
             Zombie zombie = loc.getWorld().spawn(loc.toCenterLocation(), Zombie.class, false, zombie1 -> {});
             zombie.setInvisible(true);
             zombie.setBaby();

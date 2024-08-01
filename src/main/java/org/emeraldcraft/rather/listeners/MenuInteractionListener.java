@@ -19,8 +19,6 @@ public class MenuInteractionListener implements Listener {
     public void onInventoryEvent(InventoryClickEvent event) {
         if (!(event.getInventory().getHolder() instanceof WouldYouRatherInventory)) return;
 
-        System.out.println(event.getSlot());
-
         //check for valid slot
         if (Arrays.stream(WouldYouRatherInventory.OPTION_ONE_SELECTION_AREA).anyMatch(slot -> slot == event.getSlot())) {
             PlayerChoices playerChoices = WouldYouRatherPlugin.getInstance().getPlayerChoices();

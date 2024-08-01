@@ -35,6 +35,7 @@ public class Choices {
             new Choice(SinkingBoatsChoice::new),
             new Choice(NoSprintChoice::new),
             new Choice(BlocksFightBackChoice::new),
-            new Choice(CantTouchGrassChoice::new)
+            new Choice(CantTouchGrassChoice::new),
+            new Choice(RepeatingTNTChoice::new)
     };
 }

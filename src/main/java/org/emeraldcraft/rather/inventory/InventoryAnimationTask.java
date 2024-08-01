@@ -13,7 +13,6 @@ public class InventoryAnimationTask implements Runnable {
 
     public InventoryAnimationTask(Player player) {
         this.player = player;
-        Bukkit.getLogger().log(Level.INFO, "Creating a new task.");
     }
 
     @Override

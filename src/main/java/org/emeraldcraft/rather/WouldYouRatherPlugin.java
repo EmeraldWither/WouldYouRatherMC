@@ -11,6 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.emeraldcraft.rather.choiceapi.PlayerChoices;
+import org.emeraldcraft.rather.commands.ActiveChoicesCommand;
 import org.emeraldcraft.rather.commands.PromptCommand;
 import org.emeraldcraft.rather.commands.StartCommand;
 import org.emeraldcraft.rather.listeners.MenuInteractionListener;
@@ -22,6 +23,7 @@ import java.util.List;
 public final class WouldYouRatherPlugin extends JavaPlugin {
     @Getter
     private static WouldYouRatherPlugin instance;
+    @Getter
     private PlayerChoices playerChoices;
 
     public static void setInstance(WouldYouRatherPlugin instance) {
@@ -36,37 +38,31 @@ public final class WouldYouRatherPlugin extends JavaPlugin {
         manager.registerEventHandler(LifecycleEvents.COMMANDS, event -> {
             final Commands commands = event.registrar();
             commands.register(
-                    getPromptCommand(),
+                    getWouldYouRatherCommand(),
                     "Default Would You Rather Command",
                     List.of()
             );
         });
-
         Bukkit.getPluginManager().registerEvents(new MenuInteractionListener(), this);
     }
 
-    private @NotNull LiteralCommandNode<CommandSourceStack> getPromptCommand() {
+    private @NotNull LiteralCommandNode<CommandSourceStack> getWouldYouRatherCommand() {
         return Commands.literal("wouldyourather")
                 .then(Commands.literal("prompt")
+                        .requires(commandSourceStack -> commandSourceStack.getSender().hasPermission("wouldyourather.prompt"))
                         .then(Commands.argument("player", ArgumentTypes.player()).executes(
                                         context -> new PromptCommand().run(context)
                                 )
                         )
                 )
                 .then(Commands.literal("start")
-                        .executes(
-                                context -> new StartCommand().run()
-                        )
+                        .requires(commandSourceStack -> commandSourceStack.getSender().hasPermission("wouldyourather.start"))
+                        .executes(context -> new StartCommand().run(context))
                 )
+                .then(Commands.literal("choices")
+                        .executes(context -> new ActiveChoicesCommand().run(context))
+                )
+
                 .build();
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
-    }
-
-    public PlayerChoices getPlayerChoices() {
-        return this.playerChoices;
     }
 }
