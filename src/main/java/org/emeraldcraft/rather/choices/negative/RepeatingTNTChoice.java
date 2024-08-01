@@ -14,7 +14,10 @@ public class RepeatingTNTChoice extends Choice.ChoiceRunnable {
     @Override
     public void run() {
         markActive();
-        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(getPlugin(), () -> getPlayer().getWorld().spawnEntity(getPlayer().getLocation(), EntityType.TNT),40, DELAY);
+        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(getPlugin(), () -> {
+            if(getPlayer() == null) return;
+            getPlayer().getWorld().spawnEntity(getPlayer().getLocation(), EntityType.TNT);
+        },40, DELAY);
     }
 
     @Override

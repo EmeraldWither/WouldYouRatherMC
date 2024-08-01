@@ -19,6 +19,8 @@ public class LeavesToCreepersChoice extends Choice.ChoiceRunnable {
     public void run() {
         markActive();
         id = Bukkit.getScheduler().scheduleSyncRepeatingTask(getPlugin(), () -> {
+            if(getPlayer() == null) return;
+
             Location location = getPlayer().getLocation();
             for(int x = -3; x < 3; x++) {
                 for(int y = -3; y < 3; y++) {

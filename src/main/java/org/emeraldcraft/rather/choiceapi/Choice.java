@@ -8,15 +8,16 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
+import java.util.UUID;
+
 public record Choice(ChoiceProvider runnable) {
 
     @Getter
     public abstract static class ChoiceRunnable {
 
         private final String description;
-
-        @Setter
         private Player player;
+        private UUID playerUUID;
         @Setter
         private Plugin plugin;
         private boolean activeChoice = false;
@@ -34,8 +35,12 @@ public record Choice(ChoiceProvider runnable) {
         }
 
         public Player getPlayer() {
-            if(!player.isValid() || !player.isOnline()) player = Bukkit.getPlayer(player.getUniqueId());
+            if(player == null) player = Bukkit.getPlayer(playerUUID);
             return player;
+        }
+        public void setPlayer(Player player) {
+            this.player = player;
+            this.playerUUID = player.getUniqueId();
         }
 
         /**
