@@ -38,6 +38,7 @@ public class Choices {
             new Choice(CantTouchGrassChoice::new),
             new Choice(RepeatingTNTChoice::new),
             new Choice(HallucinationsChoice::new),
-            new Choice(OnlyAcaciaChoice::new)
+            new Choice(OnlyAcaciaChoice::new),
+            new Choice(RandomStructureSpawnChoice::new)
     };
 }
