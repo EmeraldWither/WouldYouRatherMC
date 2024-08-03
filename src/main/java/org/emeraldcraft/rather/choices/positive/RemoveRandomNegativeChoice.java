@@ -2,6 +2,8 @@ package org.emeraldcraft.rather.choices.positive;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
+import org.bukkit.Bukkit;
 import org.emeraldcraft.rather.WouldYouRatherPlugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 import org.emeraldcraft.rather.choiceapi.PlayerChoices;
@@ -23,8 +25,9 @@ public class RemoveRandomNegativeChoice extends Choice.ChoiceRunnable {
             int randomIndex = new Random().nextInt(choices.size());
             if(!choices.get(randomIndex)[1].isActiveChoice()) continue;
             choices.get(randomIndex)[1].cancel();
-            getPlayer().sendMessage(Component.text("You removed the following choice: \"" + choices.get(randomIndex)[1].getDescription() + "\"!").color(NamedTextColor.GREEN));
+            final String description = choices.get(randomIndex)[1].getDescription();
             choices.get(randomIndex)[1] = new NullChoice();
+            Bukkit.getScheduler().scheduleSyncDelayedTask(getPlugin(), () -> getPlayer().sendMessage(Component.text("You removed the following choice: \"" + description + "\"!").color(NamedTextColor.YELLOW).decorate(TextDecoration.BOLD)), 2);
             return;
         }
     }

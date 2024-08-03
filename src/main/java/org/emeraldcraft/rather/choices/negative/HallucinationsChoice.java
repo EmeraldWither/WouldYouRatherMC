@@ -82,10 +82,17 @@ public class HallucinationsChoice extends Choice.ChoiceRunnable implements Liste
         Bukkit.getScheduler().cancelTask(randomNoisesID);
         Bukkit.getScheduler().cancelTask(fakeDiamondsID);
         Bukkit.getScheduler().cancelTask(swappedItemsID);
+        convertGlowLichen(getPlayer());
+        fixInventory();
+
     }
 
     @EventHandler
     public void onPlayerDisconnect(PlayerQuitEvent event) {
+        fixInventory();
+    }
+
+    public void fixInventory() {
         for(int i = 0; i < getPlayer().getInventory().getContents().length; i++) {
             ItemStack item = getPlayer().getInventory().getContents()[i];
             if(item == null) continue;
@@ -166,6 +173,7 @@ public class HallucinationsChoice extends Choice.ChoiceRunnable implements Liste
             }
         }
     }
+
 
 
 

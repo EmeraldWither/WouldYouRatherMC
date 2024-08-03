@@ -2,8 +2,10 @@ package org.emeraldcraft.rather.choices.negative;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityToggleSwimEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
@@ -28,6 +30,12 @@ public class NoSprintChoice extends Choice.ChoiceRunnable implements Listener {
             }
 
         }
+    }
+
+    @EventHandler
+    public void onSwim(EntityToggleSwimEvent event) {
+        if (!event.getEntity().equals(getPlayer())) return;
+        ((Player) event.getEntity()).setSprinting(false);
     }
 
     @Override

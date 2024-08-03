@@ -17,6 +17,7 @@ public class SinkingBoatsChoice extends Choice.ChoiceRunnable implements Listene
 
     @EventHandler
     public void onBoatMove(VehicleMoveEvent event) {
+        //TODO: Fix it if there are two people in the boat
         if (!event.getVehicle().getPassengers().contains(getPlayer())) return;
         event.getVehicle().setVelocity(event.getVehicle().getVelocity().setY(-0.2));
     }

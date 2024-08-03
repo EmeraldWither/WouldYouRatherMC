@@ -1,5 +1,6 @@
 package org.emeraldcraft.rather.choices.negative;
 
+import com.destroystokyo.paper.event.player.PlayerPostRespawnEvent;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -37,6 +38,12 @@ public class PermBlindnessChoice extends Choice.ChoiceRunnable implements Listen
                 getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, PotionEffect.INFINITE_DURATION, 1, true, true));
             }
         }
+    }
+
+    @EventHandler
+    public void onDeath(PlayerPostRespawnEvent e) {
+        if(!e.getPlayer().equals(getPlayer())) return;
+        getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, PotionEffect.INFINITE_DURATION, 1, true, true));
     }
 
     @Override

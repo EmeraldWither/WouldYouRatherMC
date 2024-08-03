@@ -10,8 +10,12 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * this code absolutely sucks
+ * this code absolutely sucks.
+ *
+ * very unstable. removed for now becuase it doesnt really work
  */
+
+@Deprecated
 public class AllItemsDeCraftedChoice extends Choice.ChoiceRunnable {
     public AllItemsDeCraftedChoice() {
         super("All items on your get de-crafted");

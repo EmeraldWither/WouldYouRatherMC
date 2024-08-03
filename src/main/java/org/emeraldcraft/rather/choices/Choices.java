@@ -30,7 +30,7 @@ public class Choices {
             new Choice(ChunkDeleteChoice::new),
             new Choice(NetherTeleportChoice::new),
             new Choice(LeavesToCreepersChoice::new),
-            new Choice(AllItemsDeCraftedChoice::new),
+//            new Choice(AllItemsDeCraftedChoice::new),
             new Choice(OnlyRottenFleshChoice::new),
             new Choice(SinkingBoatsChoice::new),
             new Choice(NoSprintChoice::new),
