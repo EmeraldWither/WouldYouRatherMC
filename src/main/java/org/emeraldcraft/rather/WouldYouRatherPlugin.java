@@ -1,6 +1,7 @@
 package org.emeraldcraft.rather;
 
 import com.mojang.brigadier.tree.LiteralCommandNode;
+import com.samjakob.spigui.SpiGUI;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
@@ -25,7 +26,8 @@ public final class WouldYouRatherPlugin extends JavaPlugin {
     private static WouldYouRatherPlugin instance;
     @Getter
     private PlayerChoices playerChoices;
-
+    @Getter
+    private SpiGUI spiGUI;
     public static void setInstance(WouldYouRatherPlugin instance) {
         WouldYouRatherPlugin.instance = instance;
     }
@@ -33,6 +35,7 @@ public final class WouldYouRatherPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         setInstance(this);
+        spiGUI = new SpiGUI(this);
         playerChoices = new PlayerChoices();
         @NotNull LifecycleEventManager<Plugin> manager = this.getLifecycleManager();
         manager.registerEventHandler(LifecycleEvents.COMMANDS, event -> {
