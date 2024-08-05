@@ -1,7 +1,7 @@
 package org.emeraldcraft.rather.choices;
 
 import org.emeraldcraft.rather.choiceapi.Choice;
-import org.emeraldcraft.rather.choices.negative.TaxesChoice;
+import org.emeraldcraft.rather.choices.negative.MCGirlfriendChoice;
 import org.emeraldcraft.rather.choices.positive.*;
 public class Choices {
     public static final Choice[] POSITIVE = new Choice[]{
@@ -40,6 +40,7 @@ public class Choices {
 //            new Choice(HallucinationsChoice::new),
 //            new Choice(OnlyAcaciaChoice::new),
 //            new Choice(RandomStructureSpawnChoice::new),
-            new Choice(TaxesChoice::new),
+//            new Choice(TaxesChoice::new),
+            new Choice(MCGirlfriendChoice::new),
     };
 }
