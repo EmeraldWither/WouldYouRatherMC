@@ -79,9 +79,9 @@ public class MCGirlfriendChoice extends Choice.ChoiceRunnable implements Listene
     }
 
     private Component getChatMessage(String[] array) {
-        String gfTxt = array[random.nextInt(array.length)].replaceAll("%player%", getPlayer().getName());
+        String gfText = array[random.nextInt(array.length)].replaceAll("%player%", getPlayer().getName());
         String gfName = "<%s's GF> ".formatted(getPlayer().getName());
-        return Component.text(gfName).append(Component.text(gfTxt).color(NamedTextColor.DARK_GRAY));
+        return Component.text(gfName + gfText);
     }
 
     private void runLater(Runnable runnable, int delay) {
