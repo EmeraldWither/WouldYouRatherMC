@@ -7,7 +7,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class EndermenNeverAgroChoice extends Choice.ChoiceRunnable implements Listener {
     public EndermenNeverAgroChoice() {
-        super("Enderman will not agro you if you look at them in the eyes");
+        super("Enderman will not agro you if you look at them in the eyes", "endermen-never-agro");
     }
 
     @Override

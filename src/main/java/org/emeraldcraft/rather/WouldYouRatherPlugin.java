@@ -1,5 +1,7 @@
 package org.emeraldcraft.rather;
 
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import com.samjakob.spigui.SpiGUI;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
@@ -28,8 +30,18 @@ public final class WouldYouRatherPlugin extends JavaPlugin {
     private PlayerChoices playerChoices;
     @Getter
     private SpiGUI spiGUI;
+
+    @Getter
+    private ProtocolManager protocolLib;
+
     public static void setInstance(WouldYouRatherPlugin instance) {
         WouldYouRatherPlugin.instance = instance;
+    }
+
+
+    @Override
+    public void onLoad() {
+        protocolLib = ProtocolLibrary.getProtocolManager();
     }
 
     @Override

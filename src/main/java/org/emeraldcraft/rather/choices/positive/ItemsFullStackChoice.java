@@ -5,7 +5,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class ItemsFullStackChoice extends Choice.ChoiceRunnable {
     public ItemsFullStackChoice() {
-        super("All the items in your inventory become a full stack");
+        super("All the items in your inventory become a full stack", "full-stack-choice");
     }
 
     @Override

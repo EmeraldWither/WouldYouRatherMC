@@ -19,7 +19,7 @@ public class AlwaysEnderEyesChoice extends Choice.ChoiceRunnable implements List
     private Piglin piglin;
 
     public AlwaysEnderEyesChoice() {
-        super("You always get eyes of enders from Piglin");
+        super("You always get eyes of enders from Piglin", "always-ender-eyes");
     }
 
     @Override

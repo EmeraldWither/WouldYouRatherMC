@@ -8,7 +8,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class FireResChoice extends Choice.ChoiceRunnable implements Listener {
     public FireResChoice() {
-        super("You get fire resistance");
+        super("You get fire resistance", "fire-res");
     }
 
     @Override

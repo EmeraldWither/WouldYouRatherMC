@@ -5,7 +5,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class NetherTeleportChoice extends Choice.ChoiceRunnable {
     public NetherTeleportChoice() {
-        super("You get teleported to the nether");
+        super("You get teleported to the nether", "nether-tp");
     }
 
     @Override

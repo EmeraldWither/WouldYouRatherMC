@@ -1,4 +1,4 @@
-package org.emeraldcraft.rather.choices.positive;
+package org.emeraldcraft.rather.choices.negative;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -12,9 +12,9 @@ import org.emeraldcraft.rather.choices.NullChoice;
 import java.util.List;
 import java.util.Random;
 
-public class RemoveRandomNegativeChoice extends Choice.ChoiceRunnable {
-    public RemoveRandomNegativeChoice() {
-        super("A random negative choice is removed.", "remove-random-negative-choice");
+public class RemoveRandomPositiveChoice extends Choice.ChoiceRunnable {
+    public RemoveRandomPositiveChoice() {
+        super("A random positive choice is removed.", "remove-random-positive-choice");
     }
 
     @Override
@@ -24,10 +24,10 @@ public class RemoveRandomNegativeChoice extends Choice.ChoiceRunnable {
         if(choices == null || choices.isEmpty()) return;
         while(true) {
             int randomIndex = new Random().nextInt(choices.size());
-            if(!choices.get(randomIndex)[1].isActiveChoice()) continue;
-            choices.get(randomIndex)[1].cancel();
-            final String description = choices.get(randomIndex)[1].getDescription();
-            choices.get(randomIndex)[1] = new NullChoice();
+            if(!choices.get(randomIndex)[0].isActiveChoice()) continue;
+            choices.get(randomIndex)[0].cancel();
+            final String description = choices.get(randomIndex)[0].getDescription();
+            choices.get(randomIndex)[0] = new NullChoice();
             Bukkit.getScheduler().scheduleSyncDelayedTask(getPlugin(), () -> getPlayer().sendMessage(Component.text("You removed the following choice: \"" + description + "\"!").color(NamedTextColor.YELLOW).decorate(TextDecoration.BOLD)), 2);
             return;
         }

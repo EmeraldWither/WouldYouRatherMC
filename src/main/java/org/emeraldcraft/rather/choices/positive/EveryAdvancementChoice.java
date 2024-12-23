@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 public class EveryAdvancementChoice extends Choice.ChoiceRunnable {
     public EveryAdvancementChoice() {
-        super("You get every advancement");
+        super("You get every advancement", "every-advancement");
     }
 
     @Override

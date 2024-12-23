@@ -22,7 +22,7 @@ public class TaxesChoice extends Choice.ChoiceRunnable implements Listener {
     private boolean validatedItems = false;
 
     public TaxesChoice() {
-        super("You have to start paying taxes");
+        super("You have to start paying taxes", "taxes");
     }
 
     @Override

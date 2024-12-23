@@ -1,12 +1,13 @@
 package org.emeraldcraft.rather.choiceapi;
 
+import com.comphenix.protocol.ProtocolManager;
 import lombok.Getter;
-import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.emeraldcraft.rather.WouldYouRatherPlugin;
 
 import java.util.UUID;
 
@@ -18,12 +19,20 @@ public record Choice(ChoiceProvider runnable) {
         private final String description;
         private Player player;
         private UUID playerUUID;
-        @Setter
-        private Plugin plugin;
+        private final String id;
+
+        @Getter
+        private static final WouldYouRatherPlugin plugin = ((WouldYouRatherPlugin) JavaPlugin.getProvidingPlugin(WouldYouRatherPlugin.class));
         private boolean activeChoice = false;
 
-        public ChoiceRunnable(String description){
+        public ChoiceRunnable(String description, String id){
             this.description = description;
+            this.id = id;
+
+        }
+
+        private void generateExpireTime() {
+
         }
 
         public void registerEvents() {
@@ -55,6 +64,10 @@ public record Choice(ChoiceProvider runnable) {
                 //unregisters ourself as a listener
                 HandlerList.unregisterAll(((Listener) this));
             }
+        }
+
+        public static ProtocolManager getProtocolLib() {
+            return getPlugin().getProtocolLib();
         }
 
         protected void markActive() {

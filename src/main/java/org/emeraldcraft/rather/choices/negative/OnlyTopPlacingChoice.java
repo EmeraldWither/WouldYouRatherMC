@@ -9,7 +9,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class OnlyTopPlacingChoice extends Choice.ChoiceRunnable implements Listener {
     public OnlyTopPlacingChoice() {
-        super("You can only place on the top of blocks");
+        super("You can only place on the top of blocks", "top-placing");
     }
 
     @Override

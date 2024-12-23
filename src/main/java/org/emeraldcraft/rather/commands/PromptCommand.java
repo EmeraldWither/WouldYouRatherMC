@@ -4,34 +4,12 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.emeraldcraft.rather.choiceapi.Choice;
-import org.emeraldcraft.rather.choices.Choices;
-import org.emeraldcraft.rather.inventory.WouldYouRatherInventory;
-import org.emeraldcraft.rather.WouldYouRatherPlugin;
-
-import java.util.Random;
+import org.emeraldcraft.rather.PlayerPrompter;
 
 @SuppressWarnings("UnstableApiUsage")
 public class PromptCommand {
     public int run(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        Player sender = context.getArgument("player", PlayerSelectorArgumentResolver.class).resolve(context.getSource()).getFirst();
-
-        Choice[] option1 = new Choice[2];
-        option1[0] = Choices.POSITIVE[new Random().nextInt(Choices.POSITIVE.length)];
-        option1[1] = Choices.NEGATIVE[new Random().nextInt(Choices.NEGATIVE.length)];
-
-        Choice[] option2 = new Choice[2];
-        option2[0] = Choices.POSITIVE[new Random().nextInt(Choices.POSITIVE.length)];
-        option2[1] = Choices.NEGATIVE[new Random().nextInt(Choices.NEGATIVE.length)];
-
-
-        Inventory inventory = new WouldYouRatherInventory(JavaPlugin.getPlugin(WouldYouRatherPlugin.class),option1, option2, WouldYouRatherInventory.INVENTORY_NAME).getInventory();
-        WouldYouRatherPlugin.getInstance().getPlayerChoices().proposeOptions(sender, new Choice[][]{option1, option2}, inventory);
-        assert sender != null;
-        sender.openInventory(inventory);
+        PlayerPrompter.promptPlayer(context.getArgument("player", PlayerSelectorArgumentResolver.class).resolve(context.getSource()).getFirst());
         return 0;
     }
 

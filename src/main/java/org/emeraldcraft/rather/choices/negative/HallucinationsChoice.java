@@ -30,7 +30,7 @@ public class HallucinationsChoice extends Choice.ChoiceRunnable implements Liste
     private final HashMap<ItemStack, ItemStack> swappedWoodenItems = new HashMap<>();
 
     public HallucinationsChoice() {
-        super("You sometimes hallucinate things that arent there...");
+        super("You sometimes hallucinate things that arent there...", "hallucinations");
     }
 
     @Override
@@ -49,7 +49,7 @@ public class HallucinationsChoice extends Choice.ChoiceRunnable implements Liste
             Location loc = getPlayer().getLocation().add(Math.random() * 20, Math.random() * 5, Math.random() * 20);
             getPlayer().playSound(loc, sound, 1.0f, 1.0f);
 
-        }, 0, 20 * 60 * 2);
+        }, 0, 20 * (25 + (int) (Math.random() * 20 * 10)));
 
         fakeDiamondsID = Bukkit.getScheduler().scheduleSyncRepeatingTask(getPlugin(), () -> {
             if(getPlayer() == null) return;

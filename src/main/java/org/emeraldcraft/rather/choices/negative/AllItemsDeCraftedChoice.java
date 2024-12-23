@@ -18,7 +18,7 @@ import java.util.List;
 @Deprecated
 public class AllItemsDeCraftedChoice extends Choice.ChoiceRunnable {
     public AllItemsDeCraftedChoice() {
-        super("All items on your get de-crafted");
+        super("All items on your get de-crafted", "decrafted-items");
     }
 
     @Override

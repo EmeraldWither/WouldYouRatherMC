@@ -6,7 +6,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class ChunkDeleteChoice extends Choice.ChoiceRunnable {
     public ChunkDeleteChoice() {
-        super("The chunk you are standing in is deleted");
+        super("The chunk you are standing in is deleted", "chunk-delete");
     }
 
     @Override

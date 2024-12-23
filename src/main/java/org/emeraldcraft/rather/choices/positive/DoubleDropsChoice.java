@@ -7,7 +7,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class DoubleDropsChoice extends Choice.ChoiceRunnable implements Listener {
     public DoubleDropsChoice() {
-        super("You get double the drops");
+        super("You get double the drops", "double-drops");
     }
 
     @Override

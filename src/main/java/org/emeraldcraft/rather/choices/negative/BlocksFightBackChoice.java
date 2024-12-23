@@ -19,7 +19,7 @@ import org.joml.Vector3f;
 
 public class BlocksFightBackChoice extends Choice.ChoiceRunnable implements Listener {
     public BlocksFightBackChoice() {
-        super("Blocks you break fight back");
+        super("Blocks you break fight back", "angry-blocks");
     }
 
     @Override

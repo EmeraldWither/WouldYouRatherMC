@@ -14,7 +14,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class PermBlindnessChoice extends Choice.ChoiceRunnable implements Listener {
     public PermBlindnessChoice() {
-        super("You will have permanent blindness");
+        super("You will have permanent blindness", "perm-blindness");
     }
 
     @Override

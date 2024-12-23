@@ -7,7 +7,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class NoExplosionDamageChoice extends Choice.ChoiceRunnable implements Listener {
     public NoExplosionDamageChoice() {
-        super("You no longer take explosion damage");
+        super("You no longer take explosion damage", "no-explosion-damage");
     }
 
     @Override

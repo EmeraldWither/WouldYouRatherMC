@@ -9,7 +9,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class EnderPearlEggsChoice extends Choice.ChoiceRunnable implements Listener {
     public EnderPearlEggsChoice() {
-        super("You can use eggs as ender pearls.");
+        super("You can use eggs as ender pearls.", "egg-enderpearl");
     }
 
     @Override

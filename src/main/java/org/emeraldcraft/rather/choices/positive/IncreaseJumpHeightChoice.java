@@ -10,7 +10,7 @@ import static org.bukkit.potion.PotionEffectType.JUMP_BOOST;
 
 public class IncreaseJumpHeightChoice extends Choice.ChoiceRunnable implements Listener {
     public IncreaseJumpHeightChoice() {
-        super("You get jump boost");
+        super("You get jump boost", "jump-boost");
     }
 
     @Override

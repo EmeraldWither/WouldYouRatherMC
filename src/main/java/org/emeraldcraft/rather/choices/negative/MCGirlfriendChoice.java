@@ -16,7 +16,7 @@ import static org.emeraldcraft.rather.choices.negative.MCGirlfriendChoice.MCGirl
 
 public class MCGirlfriendChoice extends Choice.ChoiceRunnable implements Listener {
     public MCGirlfriendChoice() {
-        super("Your mc girlfriend breaks up with you.");
+        super("Your mc girlfriend breaks up with you.", "mc-girlfriend");
     }
 
     public static final class MCGirlfriendDialogue {

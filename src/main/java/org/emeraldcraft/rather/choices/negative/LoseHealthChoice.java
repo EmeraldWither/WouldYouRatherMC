@@ -9,7 +9,7 @@ import java.util.Objects;
 public class LoseHealthChoice extends Choice.ChoiceRunnable {
 
     public LoseHealthChoice() {
-        super("You lose 25% of your health.");
+        super("You lose 25% of your health.", "lose-health");
     }
 
     @Override

@@ -11,7 +11,7 @@ public class DecayingWorldChoice extends Choice.ChoiceRunnable {
     private int id;
 
     public DecayingWorldChoice() {
-        super("The world decays around you");
+        super("The world decays around you", "decaying-world");
     }
 
     @Override

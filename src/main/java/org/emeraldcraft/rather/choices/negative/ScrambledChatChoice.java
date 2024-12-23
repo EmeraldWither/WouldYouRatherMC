@@ -8,7 +8,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class ScrambledChatChoice extends Choice.ChoiceRunnable implements Listener {
     public ScrambledChatChoice() {
-        super("Your chat gets scrambled");
+        super("Your chat gets scrambled", "scrambled-chat");
     }
 
     @Override

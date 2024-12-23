@@ -8,7 +8,7 @@ public class RepeatingTNTChoice extends Choice.ChoiceRunnable {
     public static final int DELAY = 20 * 30;
     private int taskID;
     public RepeatingTNTChoice() {
-        super("TNT spawns on you every 30 seconds");
+        super("TNT spawns on you every 30 seconds", "tnt-spawns");
     }
 
     @Override

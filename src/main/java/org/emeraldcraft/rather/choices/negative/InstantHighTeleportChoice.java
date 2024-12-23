@@ -6,7 +6,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class InstantHighTeleportChoice extends Choice.ChoiceRunnable {
     public InstantHighTeleportChoice() {
-        super("You get teleported to y=250");
+        super("You get teleported to y=250", "y250-choice");
     }
 
     @Override

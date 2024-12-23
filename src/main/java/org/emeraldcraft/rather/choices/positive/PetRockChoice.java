@@ -21,7 +21,7 @@ import org.joml.Vector3f;
 
 public class PetRockChoice extends Choice.ChoiceRunnable implements Listener {
     public PetRockChoice() {
-        super("You get a pet rock that defends you");
+        super("You get a pet rock that defends you", "rocky");
     }
 
     @Override

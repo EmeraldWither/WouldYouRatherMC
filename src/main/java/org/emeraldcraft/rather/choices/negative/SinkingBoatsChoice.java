@@ -7,7 +7,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class SinkingBoatsChoice extends Choice.ChoiceRunnable implements Listener {
     public SinkingBoatsChoice() {
-        super("Boats you ride in sink");
+        super("Boats you ride in sink", "sinking-boats");
     }
 
     @Override

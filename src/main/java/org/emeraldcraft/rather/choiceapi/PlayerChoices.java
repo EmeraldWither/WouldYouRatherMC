@@ -38,13 +38,11 @@ public class PlayerChoices {
         playerInventories.remove(player);
         Choice.ChoiceRunnable choice = choices[x][0].runnable().getChoice();
         choice.setPlayer(player);
-        choice.setPlugin(WouldYouRatherPlugin.getInstance());
         choice.run();
 
 
         Choice.ChoiceRunnable choice2 = choices[x][1].runnable().getChoice();
         choice2.setPlayer(player);
-        choice2.setPlugin(WouldYouRatherPlugin.getInstance());
         choice2.run();
 
         addSelectedOption(player, new Choice.ChoiceRunnable[]{choice, choice2});

@@ -7,7 +7,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class NoHungerChoice extends Choice.ChoiceRunnable implements Listener {
     public NoHungerChoice() {
-        super("You will no longer go hungry");
+        super("You will no longer go hungry", "no-hunger");
     }
 
     @Override

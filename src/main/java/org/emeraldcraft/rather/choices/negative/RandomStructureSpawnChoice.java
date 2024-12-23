@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class RandomStructureSpawnChoice extends Choice.ChoiceRunnable {
     public RandomStructureSpawnChoice() {
-        super("A random structure will spawn on you");
+        super("A random structure will spawn on you", "random-structure");
     }
 
     @Override

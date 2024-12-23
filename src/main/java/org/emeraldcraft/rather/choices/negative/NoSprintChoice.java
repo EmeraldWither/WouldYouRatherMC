@@ -11,7 +11,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class NoSprintChoice extends Choice.ChoiceRunnable implements Listener {
     public NoSprintChoice() {
-        super("You can no longer sprint");
+        super("You can no longer sprint", "no-sprint");
     }
 
     @Override

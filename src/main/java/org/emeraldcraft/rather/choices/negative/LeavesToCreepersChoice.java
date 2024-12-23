@@ -12,7 +12,7 @@ public class LeavesToCreepersChoice extends Choice.ChoiceRunnable {
     private int id;
 
     public LeavesToCreepersChoice() {
-        super("Leaves around you turn into creepers");
+        super("Leaves around you turn into creepers", "leaves-to-creepers");
     }
 
     @Override

@@ -11,6 +11,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.emeraldcraft.rather.WouldYouRatherPlugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
+import org.emeraldcraft.rather.choices.NullChoice;
 
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class ActiveChoicesCommand {
         sender.sendMessage(Component.text("CHOICES YOU SELECTED").decorate(TextDecoration.ITALIC, TextDecoration.BOLD));
         sender.sendMessage(Component.text("=======================================").color(NamedTextColor.YELLOW));
         for (Choice.ChoiceRunnable[] choice : choices) {
+            if(choice[0] instanceof NullChoice) continue;
             String c1 = choice[0].getDescription();
             String c2 = choice[1].getDescription();
             sender.sendMessage(

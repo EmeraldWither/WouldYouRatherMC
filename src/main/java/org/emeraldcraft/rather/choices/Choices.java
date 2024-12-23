@@ -19,8 +19,9 @@ public class Choices {
             new Choice(FasterMovementChoice::new),
             new Choice(IncreaseJumpHeightChoice::new),
             new Choice(PetRockChoice::new),
-            new Choice(RemoveRandomNegativeChoice::new),
-            new Choice(EndermenNeverAgroChoice::new)
+            new Choice(RemoveRandomPositiveChoice::new),
+            new Choice(EndermenNeverAgroChoice::new),
+//            new Choice(ESPChoice::new),
     };
     public static final Choice[] NEGATIVE = new Choice[]{
             new Choice(PermBlindnessChoice::new),
@@ -45,5 +46,6 @@ public class Choices {
             new Choice(TaxesChoice::new),
             new Choice(MCGirlfriendChoice::new),
             new Choice(DecayingWorldChoice::new),
+            new Choice(RemoveRandomPositiveChoice::new)
     };
 }

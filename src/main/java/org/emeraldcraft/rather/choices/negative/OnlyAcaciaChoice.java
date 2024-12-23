@@ -9,7 +9,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 public class OnlyAcaciaChoice extends Choice.ChoiceRunnable implements Listener {
 
     public OnlyAcaciaChoice() {
-        super("You can only place acacia planks.");
+        super("You can only place acacia planks.", "only-acacia");
     }
 
     @Override

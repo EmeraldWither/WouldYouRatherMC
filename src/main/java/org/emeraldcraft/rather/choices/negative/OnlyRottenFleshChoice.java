@@ -12,7 +12,7 @@ import static org.bukkit.Material.ROTTEN_FLESH;
 
 public class OnlyRottenFleshChoice extends Choice.ChoiceRunnable implements Listener {
     public OnlyRottenFleshChoice() {
-        super("You can only eat rotten flesh");
+        super("You can only eat rotten flesh", "only-rottenflesh");
     }
 
     @Override

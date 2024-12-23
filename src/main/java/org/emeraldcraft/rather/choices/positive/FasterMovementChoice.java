@@ -9,7 +9,7 @@ import static org.bukkit.potion.PotionEffectType.*;
 
 public class FasterMovementChoice extends org.emeraldcraft.rather.choiceapi.Choice.ChoiceRunnable implements Listener {
     public FasterMovementChoice() {
-        super("You move faster");
+        super("You move faster", "faster-movement");
     }
 
     @Override
