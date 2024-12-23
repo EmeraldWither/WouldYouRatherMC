@@ -10,11 +10,18 @@ import static org.bukkit.potion.PotionEffectType.*;
 public class FasterMovementChoice extends org.emeraldcraft.rather.choiceapi.Choice.ChoiceRunnable implements Listener {
     public FasterMovementChoice() {
         super("You move faster", "faster-movement");
+        markActive();
     }
 
     @Override
     public void run() {
         this.getPlayer().addPotionEffect(new PotionEffect(SPEED, Integer.MAX_VALUE, 1));
+    }
+
+    @Override
+    public void cancel() {
+        super.cancel();
+        this.getPlayer().removePotionEffect(SPEED);
     }
 
     @EventHandler

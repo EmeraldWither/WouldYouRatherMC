@@ -37,16 +37,15 @@ public class ActiveChoicesCommand {
         sender.sendMessage(Component.text("CHOICES YOU SELECTED").decorate(TextDecoration.ITALIC, TextDecoration.BOLD));
         sender.sendMessage(Component.text("=======================================").color(NamedTextColor.YELLOW));
         for (Choice.ChoiceRunnable[] choice : choices) {
-            if(choice[0] instanceof NullChoice) continue;
             String c1 = choice[0].getDescription();
             String c2 = choice[1].getDescription();
             sender.sendMessage(
                     Component.empty()
-                            .append(Component.text(c1).color(NamedTextColor.GREEN))
+                            .append(Component.text(c1).color(choice[0] instanceof NullChoice ? NamedTextColor.GRAY : NamedTextColor.GREEN))
                             .appendNewline()
                             .append(Component.text("BUT").decorate(TextDecoration.ITALIC, TextDecoration.BOLD))
                             .appendNewline()
-                            .append(Component.text(c2).color(NamedTextColor.RED))
+                            .append(Component.text(c2).color(choice[1] instanceof NullChoice ? NamedTextColor.GRAY : NamedTextColor.RED))
                             .appendNewline()
                             .append(Component.text("=======================================").color(NamedTextColor.YELLOW))
             );

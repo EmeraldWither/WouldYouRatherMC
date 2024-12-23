@@ -13,19 +13,8 @@ import java.util.Random;
 
 public class PlayerPrompter {
 
-    public static void promptPlayer(org.bukkit.entity.Player player) {
-        RemoveRandomPositiveChoice randomPositiveChoice = new RemoveRandomPositiveChoice();
-        randomPositiveChoice.setPlayer(player);
-        randomPositiveChoice.run();
-
-        RemoveRandomNegativeChoice randomNegativeChoice = new RemoveRandomNegativeChoice();
-        randomNegativeChoice.setPlayer(player);
-        randomNegativeChoice.run();
-
-
-
-        Player sender = player;
-
+    public static void promptPlayer(Player player) {
+//        removePreviousChoices(player);
         Choice[] option1 = new Choice[2];
         option1[0] = Choices.POSITIVE[new Random().nextInt(Choices.POSITIVE.length)];
         option1[1] = Choices.NEGATIVE[new Random().nextInt(Choices.NEGATIVE.length)];
@@ -36,8 +25,17 @@ public class PlayerPrompter {
 
 
         Inventory inventory = new WouldYouRatherInventory(JavaPlugin.getPlugin(WouldYouRatherPlugin.class),option1, option2, WouldYouRatherInventory.INVENTORY_NAME).getInventory();
-        WouldYouRatherPlugin.getInstance().getPlayerChoices().proposeOptions(sender, new Choice[][]{option1, option2}, inventory);
-        assert sender != null;
-        sender.openInventory(inventory);
+        WouldYouRatherPlugin.getInstance().getPlayerChoices().proposeOptions(player, new Choice[][]{option1, option2}, inventory);
+        assert player != null;
+        player.openInventory(inventory);
+    }
+    private static void removePreviousChoices(Player player) {
+        RemoveRandomPositiveChoice randomPositiveChoice = new RemoveRandomPositiveChoice();
+        randomPositiveChoice.setPlayer(player);
+        randomPositiveChoice.run();
+
+        RemoveRandomNegativeChoice randomNegativeChoice = new RemoveRandomNegativeChoice();
+        randomNegativeChoice.setPlayer(player);
+        randomNegativeChoice.run();
     }
 }

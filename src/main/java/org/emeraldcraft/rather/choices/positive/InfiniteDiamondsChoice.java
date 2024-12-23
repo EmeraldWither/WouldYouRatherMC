@@ -11,6 +11,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 public class InfiniteDiamondsChoice extends Choice.ChoiceRunnable implements Listener {
     public InfiniteDiamondsChoice() {
         super("You get diamonds from ores", "infinite-diamonds");
+        markActive();
     }
 
     @Override

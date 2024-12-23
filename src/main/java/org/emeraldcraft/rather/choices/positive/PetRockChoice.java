@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.BlockDisplay;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Wolf;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,8 +21,17 @@ import org.joml.AxisAngle4f;
 import org.joml.Vector3f;
 
 public class PetRockChoice extends Choice.ChoiceRunnable implements Listener {
+    private Wolf wolf;
     public PetRockChoice() {
         super("You get a pet rock that defends you", "rocky");
+        markActive();
+    }
+
+    @Override
+    public void cancel() {
+        super.cancel();
+        wolf.getPassengers().forEach(Entity::remove);
+        wolf.setHealth(0);
     }
 
     @Override
@@ -33,7 +43,7 @@ public class PetRockChoice extends Choice.ChoiceRunnable implements Listener {
         display.customName(Component.text("Rocky").color(NamedTextColor.GRAY));
         display.setCustomNameVisible(true);
 
-        Wolf wolf = loc.getWorld().spawn(loc.toCenterLocation(), Wolf.class, false, wolf1 -> {});
+        wolf = loc.getWorld().spawn(loc.toCenterLocation(), Wolf.class, false, wolf1 -> {});
         wolf.setInvisible(true);
         wolf.setOwner(getPlayer());
         wolf.addPassenger(display);

@@ -15,6 +15,9 @@ import org.emeraldcraft.rather.WouldYouRatherPlugin;
 import org.emeraldcraft.rather.choiceapi.Choice;
 import org.jetbrains.annotations.NotNull;
 
+import static org.bukkit.Material.DIAMOND;
+import static org.bukkit.Material.IRON_INGOT;
+
 public class TaxesChoice extends Choice.ChoiceRunnable implements Listener {
     private final SGMenu menu = WouldYouRatherPlugin.getInstance().getSpiGUI().create(ChatColor.RED + "Time to Pay Taxes.", 6);
     private ItemStack insertedItem = null;
@@ -33,6 +36,12 @@ public class TaxesChoice extends Choice.ChoiceRunnable implements Listener {
     }
 
     private void createMenu() {
+        if(taxes[0] == 0 && taxes[1] == 0) {
+            getPlayer().sendMessage("You have no taxes to pay. (you're poor). So we'll just kill you to get even.");
+            getPlayer().setHealth(0);
+            return;
+        }
+
         for (int i = 0; i < 54; i++) {
             menu.addButton(new SGButton(createIconItem(Material.GRAY_STAINED_GLASS_PANE, 1, Component.text(""))));
         }
@@ -40,9 +49,10 @@ public class TaxesChoice extends Choice.ChoiceRunnable implements Listener {
         SGButton submitButton = getSubmitButton();
         SGButton inputButton = getInputButton(submitButton);
 
-        SGButton diamondsAmount = new SGButton(createIconItem(Material.DIAMOND, taxes[0], Component.text("You need " + taxes[0] + " diamonds.").color(NamedTextColor.AQUA)));
-        SGButton ironAmount = new SGButton(createIconItem(Material.IRON_INGOT, taxes[1], Component.text("You need " + taxes[1] + " iron ingots.").color(NamedTextColor.GRAY)));
-
+        SGButton diamondsAmount = new SGButton(createIconItem(DIAMOND, taxes[0] == 0 ? 1 : taxes[0], Component.text("You need " + taxes[0] + " diamonds.").color(NamedTextColor.AQUA)));
+        SGButton ironAmount = new SGButton(createIconItem(IRON_INGOT, taxes[0] == 0 ? 1 : taxes[0], Component.text("You need " + taxes[1] + " iron ingots.").color(NamedTextColor.GRAY)));
+        if(taxes[0] == 0) getPlayer().getInventory().addItem(ItemStack.of(DIAMOND));
+        if(taxes[1] == 0) getPlayer().getInventory().addItem(ItemStack.of(IRON_INGOT));
         //create buttons
         menu.setButton(11, diamondsAmount);
         menu.setButton(15, ironAmount);
@@ -107,8 +117,8 @@ public class TaxesChoice extends Choice.ChoiceRunnable implements Listener {
     }
 
     private boolean verifyInsertedItem() {
-        if(insertedItem.getType() == Material.DIAMOND) return insertedItem.getAmount() >= taxes[0];
-        if(insertedItem.getType() == Material.IRON_INGOT) return insertedItem.getAmount() >= taxes[1];
+        if(insertedItem.getType() == DIAMOND) return insertedItem.getAmount() >= taxes[0];
+        if(insertedItem.getType() == IRON_INGOT) return insertedItem.getAmount() >= taxes[1];
         return false;
     }
 
@@ -116,10 +126,10 @@ public class TaxesChoice extends Choice.ChoiceRunnable implements Listener {
         int diamonds = 0;
         int iron = 0;
         for(ItemStack item : getPlayer().getInventory().getContents()) {
-            if (item != null && item.getType() == Material.IRON_INGOT) {
+            if (item != null && item.getType() == IRON_INGOT) {
                 iron += item.getAmount();
             }
-            if (item != null && item.getType() == Material.DIAMOND) {
+            if (item != null && item.getType() == DIAMOND) {
                 diamonds += item.getAmount();
             }
         }
@@ -128,11 +138,11 @@ public class TaxesChoice extends Choice.ChoiceRunnable implements Listener {
     }
 
     private void processTaxReturn() {
-        if (insertedItem.getType() == Material.IRON_INGOT) {
-            getPlayer().getInventory().addItem(new ItemStack(Material.IRON_INGOT, insertedItem.getAmount() - taxes[1]));
+        if (insertedItem.getType() == IRON_INGOT) {
+            getPlayer().getInventory().addItem(new ItemStack(IRON_INGOT, insertedItem.getAmount() - taxes[1]));
         }
-        if (insertedItem.getType() == Material.DIAMOND) {
-            getPlayer().getInventory().addItem(new ItemStack(Material.DIAMOND, insertedItem.getAmount() - taxes[0]));
+        if (insertedItem.getType() == DIAMOND) {
+            getPlayer().getInventory().addItem(new ItemStack(DIAMOND, insertedItem.getAmount() - taxes[0]));
         }
     }
 }

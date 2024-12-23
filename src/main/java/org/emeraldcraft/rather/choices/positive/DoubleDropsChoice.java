@@ -13,6 +13,7 @@ public class DoubleDropsChoice extends Choice.ChoiceRunnable implements Listener
     @Override
     public void run() {
         super.registerEvents();
+        markActive();
     }
     @EventHandler
     public void onBlockMine(BlockDropItemEvent event) {

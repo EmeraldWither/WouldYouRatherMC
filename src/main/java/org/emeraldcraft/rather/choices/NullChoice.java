@@ -4,7 +4,7 @@ import org.emeraldcraft.rather.choiceapi.Choice;
 
 public class NullChoice extends Choice.ChoiceRunnable {
     public NullChoice() {
-        super("This choice was removed!");
+        super("This choice was removed!", "null-choice");
     }
 
     @Override

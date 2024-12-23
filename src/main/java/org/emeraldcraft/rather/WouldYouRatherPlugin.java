@@ -2,6 +2,7 @@ package org.emeraldcraft.rather;
 
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import com.samjakob.spigui.SpiGUI;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
@@ -16,6 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.emeraldcraft.rather.choiceapi.PlayerChoices;
 import org.emeraldcraft.rather.commands.ActiveChoicesCommand;
 import org.emeraldcraft.rather.commands.PromptCommand;
+import org.emeraldcraft.rather.commands.RemoveChoice;
 import org.emeraldcraft.rather.commands.StartCommand;
 import org.emeraldcraft.rather.listeners.MenuInteractionListener;
 import org.jetbrains.annotations.NotNull;
@@ -76,6 +78,15 @@ public final class WouldYouRatherPlugin extends JavaPlugin {
                 )
                 .then(Commands.literal("choices")
                         .executes(context -> new ActiveChoicesCommand().run(context))
+                )
+                .then(
+                        Commands.literal("remove")
+                                .requires(commandSourceStack -> commandSourceStack.getSender().hasPermission("wouldyourather.remove"))
+                                .then(Commands.argument("player", ArgumentTypes.player())
+                                        .then(Commands.argument("name", StringArgumentType.string())
+                                                .executes(context -> new RemoveChoice().run(context))
+                                        )
+                                )
                 )
 
                 .build();

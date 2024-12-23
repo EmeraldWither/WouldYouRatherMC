@@ -13,6 +13,7 @@ public class EndermenNeverAgroChoice extends Choice.ChoiceRunnable implements Li
     @Override
     public void run() {
         registerEvents();
+        markActive();
     }
     @EventHandler
     public void onEndermanAgro(EndermanAttackPlayerEvent event) {

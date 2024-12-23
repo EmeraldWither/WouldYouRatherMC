@@ -15,6 +15,7 @@ public class EnderPearlEggsChoice extends Choice.ChoiceRunnable implements Liste
     @Override
     public void run() {
         super.registerEvents();
+        markActive();
     }
 
     @EventHandler

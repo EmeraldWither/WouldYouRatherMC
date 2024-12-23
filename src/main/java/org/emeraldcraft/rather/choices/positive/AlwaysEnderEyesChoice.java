@@ -25,6 +25,7 @@ public class AlwaysEnderEyesChoice extends Choice.ChoiceRunnable implements List
     @Override
     public void run() {
         super.registerEvents();
+        markActive();
     }
 
     @EventHandler

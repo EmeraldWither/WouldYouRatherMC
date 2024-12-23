@@ -6,14 +6,23 @@ import org.bukkit.event.Listener;
 import org.bukkit.potion.PotionEffect;
 import org.emeraldcraft.rather.choiceapi.Choice;
 
+import static org.bukkit.potion.PotionEffectType.FIRE_RESISTANCE;
+
 public class FireResChoice extends Choice.ChoiceRunnable implements Listener {
     public FireResChoice() {
         super("You get fire resistance", "fire-res");
+        markActive();
     }
 
     @Override
     public void run() {
         getPlayer().addPotionEffect(new PotionEffect(org.bukkit.potion.PotionEffectType.FIRE_RESISTANCE, PotionEffect.INFINITE_DURATION, 1));
+    }
+
+    @Override
+    public void cancel() {
+        super.cancel();
+        this.getPlayer().removePotionEffect(FIRE_RESISTANCE);
     }
 
     @EventHandler
